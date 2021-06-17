@@ -3,13 +3,14 @@
 // Milestone 2 Dividere i gatti in due contenitori distinti in base al sesso e aggiungere a fianco di ogni gattino un fiocco colorato di rosa, se femmina, o di blu, se maschio. Il colore del fiocco deve essere più tenue se il gatto è più giovane, più scuro se il gatto è più vecchio.
 // Milestone 3 Creare un nuovo array con prima tutti i gattini femmina e poi tutti i gattini maschio, inserendo solamente nome, colore e opacità del fiocco per ogni gatto.
 
+//Milestone 1
 //1) definisco l'array di oggetti
 const cats = [
     {
-        name: 'birillo',
+        name: 'peach',
         age: 3,
         colour: 'grey',
-        sex: 'm'
+        sex: 'f'
     },
     {
         name: 'nero-wolf',
@@ -21,7 +22,7 @@ const cats = [
         name: 'principessa',
         age: 6,
         colour: 'white',
-        sex: 'm'
+        sex: 'f'
     },
     {
         name: 'romeo',
@@ -48,3 +49,43 @@ cats.forEach((element) => {
         catsList
     ;
 });
+
+// Milestone 2 
+//3) Divido i gatti in due contenitori distinti in base al sesso
+const catsM = [];
+const catsF = [];
+
+soluzione 1 (foreach)
+cats.forEach(isMaleOrFemale);
+cats.forEach((element) => {
+    if(element.sex == 'm'){
+        catsM.push(element);
+    } else if(element.sex == 'f'){
+        catsF.push(element)
+    }
+});
+
+// soluzione 2 foreach + for in
+// cats.forEach((element, index, arr) => {
+//     for(let k in arr[index]){ //element
+//         if(k == 'sex' && arr[index][k] == 'm'){ //element
+//             catsM.push(element);
+//         } else if(k == 'sex' && arr[index][k] == 'f'){ //element
+//             catsF.push(element);
+//         } 
+//     }
+// });
+
+console.log(catsM);
+console.log(catsF);
+
+// **function */
+// function isMaleOrFemale (element){
+//     if(element.sex == 'm'){
+//         catsM.push(element);
+//     } else if(element.sex == 'f'){
+//         catsF.push(element)
+//     }
+// };
+
+
