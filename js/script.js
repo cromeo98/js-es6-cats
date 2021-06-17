@@ -36,3 +36,15 @@ const cats = [
         sex: 'm'
     }
 ];
+
+//2) stampo nome e colore dei gatti
+let catsList = '';
+
+cats.forEach((element) => {
+    const {name, colour} = element;
+    catsList += name + '\'s colour is ' + colour + '</br>';
+    ;
+    document.getElementById('cats').innerHTML =
+        catsList
+    ;
+});
