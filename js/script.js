@@ -9,42 +9,40 @@ const cats = [
     {
         name: 'peach',
         age: 3,
-        colour: 'grey',
+        colour: '#989201',
         sex: 'f'
     },
     {
         name: 'nero-wolf',
         age: 14,
-        colour: 'black',
+        colour: '#1e1b92',
         sex: 'm'
     },
     {
         name: 'principessa',
         age: 6,
-        colour: 'white',
+        colour: '#950202',
         sex: 'f'
     },
     {
         name: 'romeo',
         age: 5,
-        colour: 'dark-grey',
+        colour: '#019800',
         sex: 'm'
     },
     {
         name: 'zorba',
         age: 4,
-        colour: 'black',
+        colour: '#818284',
         sex: 'm'
     }
 ];
 
 //2) stampo nome e colore dei gatti
-let catsList = '';
-
 cats.forEach((element) => {
-    const {name, colour} = element;
-    catsList += name + '\'s colour is ' + colour +'</br>';
-    document.getElementById('cats').innerHTML = catsList;
+    document.getElementById('cats').innerHTML += `
+    ${element.name}: <i class="fas fa-cat" style="color:${element.colour}"></i>
+    `;
 });
 
 // Milestone 2 
