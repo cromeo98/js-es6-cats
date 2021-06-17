@@ -43,20 +43,19 @@ let catsList = '';
 
 cats.forEach((element) => {
     const {name, colour} = element;
-    catsList += name + '\'s colour is ' + colour + '</br>';
-    ;
-    document.getElementById('cats').innerHTML =
-        catsList
-    ;
+    catsList += name + '\'s colour is ' + colour +'</br>';
+    document.getElementById('cats').innerHTML = catsList;
 });
 
 // Milestone 2 
-//3) Divido i gatti in due contenitori distinti in base al sesso
+//3) Divido i gatti in due array distinti in base al sesso
 const catsM = [];
 const catsF = [];
+console.log(catsM);
+console.log(catsF);
 
-soluzione 1 (foreach)
-cats.forEach(isMaleOrFemale);
+// soluzione 1 (foreach)
+// cats.forEach(isMaleOrFemale);
 cats.forEach((element) => {
     if(element.sex == 'm'){
         catsM.push(element);
@@ -64,6 +63,21 @@ cats.forEach((element) => {
         catsF.push(element)
     }
 });
+
+// let catsList = '';
+
+// catsF.forEach((element) =>{
+//     const {name, colour} = element;
+//     catsList += name + '\'s colour is ' + colour;
+//     document.getElementById('cats').innerHTML = '<span class=cats-name>' + 
+//     catsList + '</span><span style=color:blue><i class="fas fa-paw"></i></span>'
+//     ;
+// });
+
+
+//4) unisco le due Array, inserendo prima le gatte f e poi i gatti M
+// const catsBeforeFCats = [...catsF, ...catsM];
+// console.log(catsBeforeFCats);
 
 // soluzione 2 foreach + for in
 // cats.forEach((element, index, arr) => {
@@ -76,15 +90,12 @@ cats.forEach((element) => {
 //     }
 // });
 
-console.log(catsM);
-console.log(catsF);
-
 // **function */
 // function isMaleOrFemale (element){
 //     if(element.sex == 'm'){
-//         catsM.push(element);
+//         return document.getElementsByClassName('cats-name').innerHTML = '<span style: color = blue><i class="fas fa-paw"></i></span>'
 //     } else if(element.sex == 'f'){
-//         catsF.push(element)
+//         return false;
 //     }
 // };
 
