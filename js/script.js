@@ -9,67 +9,105 @@ const cats = [
     {
         name: 'peach',
         age: 3,
-        colour: '#989201',
-        sex: 'f'
+        color: '#989201',
+        gender: 'f'
     },
     {
         name: 'nero-wolf',
         age: 14,
-        colour: '#1e1b92',
-        sex: 'm'
+        color: '#1e1b92',
+        gender: 'm'
     },
     {
         name: 'principessa',
         age: 6,
-        colour: '#950202',
-        sex: 'f'
+        color: '#950202',
+        gender: 'f'
     },
     {
         name: 'romeo',
         age: 5,
-        colour: '#019800',
-        sex: 'm'
+        color: '#019800',
+        gender: 'm'
     },
     {
         name: 'zorba',
         age: 4,
-        colour: '#818284',
-        sex: 'm'
+        color: '#818284',
+        gender: 'm'
     }
 ];
-
-//2) stampo nome e colore dei gatti
+document.getElementById('cats').innerHTML += 'Milestone 1';
 cats.forEach((element) => {
-    document.getElementById('cats').innerHTML += `
-    ${element.name}: <i class="fas fa-cat" style="color:${element.colour}"></i>
+    document.getElementById('cats').innerHTML += `</br>
+    ${element.name}: <i class="fas fa-cat" style="color:${element.color}"></i> <i class="fas fa-ribbon" style="color:${element.color}"></i>
     `;
 });
 
-// Milestone 2 
-//3) Divido i gatti in due array distinti in base al sesso
-const catsM = [];
-const catsF = [];
-console.log(catsM);
-console.log(catsF);
+// Milestone 2 Dividere i gatti in due contenitori distinti in base al sesso e aggiungere a fianco di ogni gattino un fiocco colorato di rosa, se femmina, o di blu, se maschio. Il colore del fiocco deve essere più tenue se il gatto è più giovane, più scuro se il gatto è più vecchio.
+const rose = "#EEA7B3"
+const blue = "#211CBB"
 
-// soluzione 1 (foreach)
-// cats.forEach(isMaleOrFemale);
-cats.forEach((element) => {
-    if(element.sex == 'm'){
-        catsM.push(element);
-    } else if(element.sex == 'f'){
-        catsF.push(element)
+const newArrCats = cats.map((element) => {
+    const {name, age, color, gender} = element;
+
+    let ribboncolor = blue;
+    if(gender == 'f'){
+        ribboncolor = rose;
+    } //oppure let ribbonColour = (gender == 'f')? pink : blue;
+
+    const opacity = element.age / 14;
+
+    return {
+        name,
+        age,
+        color,
+        gender,
+        ribbon: {
+            color: ribboncolor, //oppure let ribboncolor = (gender == 'f')? pink : blue;
+            opacity: opacity
+        }
     }
 });
 
-// let catsList = '';
+//2) stampo nome e colore dei gatti
+document.getElementById('cats').innerHTML += '</br></br>Milestone 1.5</br>'
+newArrCats.forEach((element) => {
+    document.getElementById('cats').innerHTML += `</br>
+    ${element.name}: <i class="fas fa-cat" style="color:${element.color}"></i> <i class="fas fa-ribbon" style="color:${element.ribbon.color}; opacity:${element.ribbon.opacity}"></i>
+    `;
+});
+document.getElementById('cats').innerHTML += '</br></br> Milestone 2';
 
-// catsF.forEach((element) =>{
-//     const {name, colour} = element;
-//     catsList += name + '\'s colour is ' + colour;
-//     document.getElementById('cats').innerHTML = '<span class=cats-name>' + 
-//     catsList + '</span><span style=color:blue><i class="fas fa-paw"></i></span>'
-//     ;
+const catsM = newArrCats.filter((element) =>{
+    return element.gender === 'm';
+});
+document.getElementById('cats').innerHTML += '</br></br> maschi';
+catsM.forEach((element) => {
+    document.getElementById('cats').innerHTML += `</br>
+    ${element.name}: <i class="fas fa-cat" style="color:${element.color}"></i> <i class="fas fa-ribbon" style="color:${element.ribbon.color}; opacity:${element.ribbon.opacity}"></i>
+    `;
+});
+
+const catsF = newArrCats.filter((element) =>{
+    return element.gender === 'f';
+});
+document.getElementById('cats').innerHTML += '</br></br> femmine';
+catsF.forEach((element) => {
+    document.getElementById('cats').innerHTML += `</br>
+    ${element.name}: <i class="fas fa-cat" style="color:${element.color}"></i> <i class="fas fa-ribbon" style="color:${element.ribbon.color}; opacity:${element.ribbon.opacity}"></i>
+    `;
+});
+
+// -------------soluzione 2 foreach + for in---------------------
+// cats.forEach((element, index, arr) => {
+//     for(let k in arr[index]){ //element
+//         if(k == 'gender' && arr[index][k] == 'm'){ //element
+//             catsM.push(element);
+//         } else if(k == 'gender' && arr[index][k] == 'f'){ //element
+//             catsF.push(element);
+//         } 
+//     }
 // });
 
 
@@ -77,24 +115,11 @@ cats.forEach((element) => {
 // const catsBeforeFCats = [...catsF, ...catsM];
 // console.log(catsBeforeFCats);
 
-// soluzione 2 foreach + for in
-// cats.forEach((element, index, arr) => {
-//     for(let k in arr[index]){ //element
-//         if(k == 'sex' && arr[index][k] == 'm'){ //element
-//             catsM.push(element);
-//         } else if(k == 'sex' && arr[index][k] == 'f'){ //element
-//             catsF.push(element);
-//         } 
-//     }
-// });
-
 // **function */
 // function isMaleOrFemale (element){
-//     if(element.sex == 'm'){
+//     if(element.gender == 'm'){
 //         return document.getElementsByClassName('cats-name').innerHTML = '<span style: color = blue><i class="fas fa-paw"></i></span>'
-//     } else if(element.sex == 'f'){
+//     } else if(element.gender == 'f'){
 //         return false;
 //     }
 // };
-
-
